@@ -1,0 +1,122 @@
+{
+  "material-icon-theme.activeIconPack": "nest",
+  "material-icon-theme.files.customClones": [
+    {
+      "name": "guards",
+      "base": "conduct",
+      "color": "red-500",
+      "lightColor": "red-700",
+      "fileNames": ["guard"],
+      "fileExtensions": ["guard"]
+    },
+    {
+      "name": "dto",
+      "base": "installation",
+      "color": "purple-500",
+      "lightColor": "purple-700",
+      "fileNames": ["dto"],
+      "fileExtensions": ["dto"]
+    },
+    {
+      "name": "entity",
+      "base": "database",
+      "color": "pink-500",
+      "lightColor": "pink-700",
+      "fileNames": ["entity"],
+      "fileExtensions": ["entity"]
+    }
+  ],
+  "material-icon-theme.folders.customClones": [
+    {
+      "name": "strategies",
+      "base": "scripts",
+      "color": "green-500",
+      "lightColor": "green-700",
+      "folderNames": ["strategies"],
+      "rootFolderNames": ["strategies"]
+    },
+    {
+      "name": "addresses",
+      "base": "home",
+      "color": "teal-500",
+      "lightColor": "teal-700",
+      "folderNames": ["addresses"],
+      "rootFolderNames": ["addresses"]
+    },
+    {
+      "name": "payment",
+      "base": "resource",
+      "color": "green-500",
+      "lightColor": "green-700",
+      "folderNames": ["payments"],
+      "rootFolderNames": ["payments"]
+    },
+    {
+      "name": "user",
+      "base": "admin",
+      "color": "light-green-500",
+      "lightColor": "light-green-700",
+      "folderNames": ["users"],
+      "rootFolderNames": ["users"]
+    },
+    {
+      "name": "products",
+      "base": "cart",
+      "color": "blue-500",
+      "lightColor": "blue-700",
+      "folderNames": ["products"],
+      "rootFolderNames": ["products"]
+    },
+    {
+      "name": "entity",
+      "base": "database",
+      "color": "pink-500",
+      "lightColor": "pink-700",
+      "folderNames": ["entities"],
+      "rootFolderNames": ["entities"]
+    },
+    {
+      "name": "dto",
+      "base": "connection",
+      "color": "purple-500",
+      "lightColor": "purple-700",
+      "folderNames": ["dto"],
+      "rootFolderNames": ["dto"]
+    },
+    {
+      "name": "order",
+      "base": "packages",
+      "color": "orange-500",
+      "lightColor": "orange-700",
+      "folderNames": ["orders"],
+      "rootFolderNames": ["orders"]
+    }
+  ],
+  // backend/.vscode/settings.json
+  "material-icon-theme.folders.associations": {
+    "jorges": "jorges",
+    "entity": "entity",
+    "dto": "dto",
+    "users": "user",
+    "products": "products",
+    "addresses": "addresses",
+    "payments": "payment",
+    "orders": "order",
+    "cart": "cart",
+    "admin": "admin",
+    "common": "shared",
+    "services": "tools",
+    "strategies": "strategies"
+  },
+  "material-icon-theme.files.associations": {
+    "*.module.ts": "nest-module",
+    "*.service.ts": "nest-service",
+    "*.controller.ts": "nest-controller",
+    "*.entity.ts": "entity",
+    "*.dto.ts": "dto",
+    "*.guard.ts": "guards",
+    "*.strategy.ts": "key"
+  },
+  "vsicons.presets.angular": true,
+  "idf.pythonInstallPath": "/usr/bin/python3"
+}
