@@ -1,0 +1,22 @@
+<section class="auth-container">
+  <h1>Entrar na Fazenda</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label>Nome da Fazenda</label>
+    <input type="text" formControlName="farmName" />
+
+    <label>Nome do Responsável</label>
+    <input type="text" formControlName="ownerName" />
+
+    <label>Senha / PIN</label>
+    <input type="password" formControlName="password" />
+
+    <button type="submit" [disabled]="loading">Entrar</button>
+  </form>
+
+  @if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+  }
+
+  <p class="link" (click)="goToSignUp()">Criar nova fazenda</p>
+</section>
