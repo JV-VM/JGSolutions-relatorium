@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.scss */
+.phone-wrapper .iti {
+  width: 100%;
+}
+.phone-wrapper .iti input {
+  width: 200px;
+  padding: 8px 12px 8px 52px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.phone-wrapper .iti__flag-container {
+  padding: 0 6px;
+}

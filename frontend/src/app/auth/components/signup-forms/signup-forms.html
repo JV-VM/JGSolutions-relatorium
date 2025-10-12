@@ -1,0 +1,67 @@
+<form [formGroup]="sign_up" (ngSubmit)="onSubmit()" class="signup-form">
+  <section class="flex-container">
+    <div>
+      <label for="nome_fazenda">Nome da Fazenda: </label>
+      <input
+        id="nome_fazenda"
+        type="text"
+        formControlName="nome_fazenda"
+        placeholder="Digite o nome da fazenda"
+        class="form-control"
+      />
+    </div>
+    @if (sign_up.get('nome_fazenda')?.invalid &&
+    sign_up.get('nome_fazenda')?.touched) {
+    <small class="error">{{ getErrorMessage("nome_fazenda") }}</small>
+    }
+    <div>
+      <label for="nome_usuario">Nome de Usuário: </label>
+      <input
+        id="nome_usuario"
+        type="text"
+        formControlName="nome_usuario"
+        placeholder="Digite o nome de usuário"
+        class="form-control"
+      />
+    </div>
+    @if (sign_up.get('nome_usuario')?.invalid &&
+    sign_up.get('nome_usuario')?.touched) {
+    <small class="error">{{ getErrorMessage("nome_usuario") }}</small>
+    }
+    <div>
+      <label for="phone">Telefone: </label>
+      <phone formControlName="phone" />
+    </div>
+    <div>
+      @if (sign_up.get('phone')?.invalid && sign_up.get('phone')?.touched ) {
+      <small class="error">{{ getErrorMessage("phone") }}</small>
+      }
+      <label for="phone">Senha: </label>
+      <input
+        id="senha"
+        placeholder="Digite a Senha"
+        type="password"
+        formControlName="senha"
+      />
+    </div>
+    @if (sign_up.get('senha')?.invalid && sign_up.get('senha')?.touched ) {
+    <small class="error">{{ getErrorMessage("senha") }}</small>
+    }
+    <div>
+      @if (sign_up.get('phone')?.invalid && sign_up.get('phone')?.touched ) {
+      <small class="error">{{ getErrorMessage("phone") }}</small>
+      }
+      <label for="phone">Senha: </label>
+      <input
+        id="senha"
+        placeholder="Digite a Senha"
+        type="password"
+        formControlName="senha"
+      />
+    </div>
+    @if (sign_up.get('senha')?.invalid && sign_up.get('senha')?.touched ) {
+    <small class="error">{{ getErrorMessage("senha") }}</small>
+    }
+  </section>
+  <button type="submit" (click)="onSubmit()">Cadastrar Fazenda</button>
+</form>
