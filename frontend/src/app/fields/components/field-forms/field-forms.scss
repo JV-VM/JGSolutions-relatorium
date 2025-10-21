@@ -1,0 +1,32 @@
+@use 'variables' as *;
+
+.field-form {
+  min-height: 100dvh;
+  background: $gray-bg;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  h1 {
+    font-weight: 700;
+    color: $green-dark;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}

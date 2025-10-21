@@ -1,0 +1,110 @@
+<section class="dashboard">
+  <!-- Header -->
+  <header class="header">
+    <h2>Bem-vindo à {{ farmName }}</h2>
+    <button mat-stroked-button color="warn" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Sair
+    </button>
+  </header>
+
+  <!-- Summary Cards -->
+  <div class="summary-grid">
+    <mat-card class="receita" matTooltip="Total de receitas no mês">
+      <mat-card-header>
+        <mat-icon color="primary">trending_up</mat-icon>
+        <mat-card-title>Receitas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>R$ {{ receitaMes() | number : "1.2-2" }}</h3>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="despesa" matTooltip="Total de despesas no mês">
+      <mat-card-header>
+        <mat-icon color="warn">trending_down</mat-icon>
+        <mat-card-title>Despesas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>R$ {{ despesaMes() | number : "1.2-2" }}</h3>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="saldo" matTooltip="Lucro líquido do mês">
+      <mat-card-header>
+        <mat-icon color="primary">account_balance_wallet</mat-icon>
+        <mat-card-title>Saldo Atual</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h2 [class.positivo]="saldo() >= 0" [class.negativo]="saldo() < 0">
+          R$ {{ saldo() | number : "1.2-2" }}
+        </h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="extras">
+    <mat-card class="lavouras">
+      <div>
+        <mat-card-title>🌾 Lavouras</mat-card-title>
+        <mat-card-content class="lavouras-content">
+          <h3>{{ totalLavouras() }} cadastradas</h3>
+          <button mat-flat-button color="primary" (click)="goToFields()">
+            Ver todas
+          </button>
+        </mat-card-content>
+      </div>
+    </mat-card>
+    <mat-card class="estoque">
+      <mat-card-title>📦 Estoque</mat-card-title>
+      <mat-card-content>
+        <h3></h3>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content> </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-title></mat-card-title>
+      <mat-card-content><h3></h3> </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-card class="atividade">
+    <div class="atividade-content">
+      <mat-card-title>📅 Próxima Atividade</mat-card-title>
+      <mat-card-content> </mat-card-content>
+    </div>
+  </mat-card>
+
+  <!-- Avisos -->
+  @if(avisos.length > 0){
+  <mat-card class="avisos">
+    <div class="avisos-content">
+      <mat-card-title>⚠️ Avisos</mat-card-title>
+      <mat-card-content>
+        <mat-chip-set>
+          @for(a of avisos; track $index){
+          <mat-chip color="warn" selected>{{ a }}</mat-chip>
+          }
+        </mat-chip-set>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  }
+
+  <!-- Floating Action Button -->
+  <button
+    mat-fab
+    color="accent"
+    class="fab"
+    matTooltip="Nova entrada"
+    (click)="openNewEntry()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  @if (showModal) {
+  <app-new-entry-modal
+    (dismissed)="showModal = false"
+    (select)="handleNewEntry($event)"
+  ></app-new-entry-modal>
+  }
+</section>

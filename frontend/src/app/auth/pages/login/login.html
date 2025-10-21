@@ -2,13 +2,13 @@
   <h1>Entrar na Fazenda</h1>
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label>Nome da Fazenda</label>
+    <label>Nome da Fazenda:</label>
     <input type="text" formControlName="farmName" />
 
-    <label>Nome do Responsável</label>
+    <label>Nome do Responsável:</label>
     <input type="text" formControlName="ownerName" />
 
-    <label>Senha / PIN</label>
+    <label>Senha:</label>
     <input type="password" formControlName="password" />
 
     <button type="submit" [disabled]="loading">Entrar</button>

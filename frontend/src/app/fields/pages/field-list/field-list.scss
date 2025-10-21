@@ -1,0 +1,58 @@
+@use 'variables' as *;
+
+:host {
+  display: block;
+  padding: 2rem;
+  background: $gray-bg;
+  min-height: 100dvh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    h2 {
+      font-weight: 700;
+      color: $green-dark;
+      margin: 0;
+    }
+
+    button[mat-icon-button] {
+      margin-right: 0.5rem;
+    }
+  }
+
+  button[mat-flat-button] {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.field-card {
+  transition: transform 0.15s ease;
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  margin-top: 3rem;
+  font-style: italic;
+}

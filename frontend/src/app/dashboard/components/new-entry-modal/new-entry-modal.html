@@ -1,0 +1,69 @@
+<!-- Background overlay -->
+<div class="overlay" (click)="onClose()"></div>
+
+<!-- Center modal -->
+<section
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  (click)="$event.stopPropagation()"
+>
+  <header>
+    <h2>Nova Ação</h2>
+    <button mat-icon-button type="button" color="warn" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <mat-divider />
+
+  <div class="options">
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="choose('receita')"
+    >
+      <mat-icon>trending_up</mat-icon> Receita
+    </button>
+
+    <button
+      mat-flat-button
+      color="warn"
+      type="button"
+      (click)="choose('despesa')"
+    >
+      <mat-icon>trending_down</mat-icon> Despesa
+    </button>
+
+    <button
+      mat-flat-button
+      color="accent"
+      type="button"
+      (click)="choose('atividade')"
+    >
+      <mat-icon>event</mat-icon> Atividade
+    </button>
+
+    <button
+      mat-flat-button
+      color="accent"
+      type="button"
+      (click)="choose('observacao')"
+    >
+      <mat-icon>eco</mat-icon> Observação
+    </button>
+
+    <mat-divider />
+    <button
+      mat-raised-button
+      color="secondary"
+      class="relatorio"
+      type="button"
+      (click)="choose('relatorio')"
+    >
+      <mat-icon>description</mat-icon>
+      Gerar Relatório Financeiro
+    </button>
+  </div>
+</section>

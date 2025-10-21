@@ -1,0 +1,31 @@
+@use "@angular/material" as mat;
+@use "variables" as *;
+@include mat.core();
+
+$realtorium-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$green-palette,
+      tertiary: mat.$cyan-palette,
+    ),
+    typography: (
+      brand-family: "Roboto, sans-serif",
+      bold-weight: 700,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+@include mat.all-component-themes($realtorium-theme);
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $gray-bg;
+  color: $gray-text;
+  overflow: hidden;
+  margin: 0;
+}

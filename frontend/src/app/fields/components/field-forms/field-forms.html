@@ -1,0 +1,40 @@
+<main class="field-form">
+  <h1>{{ isEdit ? "Editar Lavoura" : "Nova Lavoura" }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome da Área</mat-label>
+      <input matInput formControlName="nome" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cultura</mat-label>
+      <input matInput formControlName="cultura" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Hectares</mat-label>
+      <input matInput type="number" formControlName="hectares" />
+      <mat-hint>Ex: 12.5</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Data do Plantio</mat-label>
+      <input matInput type="date" formControlName="dataPlantio" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Variedade</mat-label>
+      <input matInput formControlName="variedade" />
+    </mat-form-field>
+
+    <section class="actions">
+      <button mat-flat-button color="primary" type="submit">
+        {{ isEdit ? "Atualizar" : "Salvar" }}
+      </button>
+      <button mat-stroked-button type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+    </section>
+  </form>
+</main>

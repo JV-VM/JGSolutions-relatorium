@@ -31,8 +31,13 @@
             ],
             "styles": [
               "node_modules/intl-tel-input/build/css/intlTelInput.css",
-              "src/styles.scss"
-            ]
+              "src/styles/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {

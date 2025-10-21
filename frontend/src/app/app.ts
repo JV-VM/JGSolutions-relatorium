@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { SignUpPage } from './auth/pages/sign-up/sign-up';
+import { Component, signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { AuthLocalService } from './auth/services/auth-local';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SignUpPage],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
-  protected title = 'frontend';
+  protected title = signal('Relatorium');
+  constructor(private router: Router, private auth: AuthLocalService) {
+    const user = this.auth.getLoggedUser();
+    if (user) {
+      this.router.navigate(['/dashboard/dashboard-page']);
+    } else {
+      this.router.navigate(['/auth/login']);
+    }
+  }
 }

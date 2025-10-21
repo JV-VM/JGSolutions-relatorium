@@ -1,0 +1,53 @@
+<section class="fields">
+  <header class="header">
+    <div class="header-left">
+      <button
+        mat-icon-button
+        color="primary"
+        aria-label="Voltar"
+        (click)="goBack()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h2>Minhas Lavouras</h2>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="addNew()">
+      <mat-icon>add</mat-icon>
+      Nova Lavoura
+    </button>
+  </header>
+
+  @if(fields().length > 0) {
+  <div class="field-grid">
+    @for(f of fields(); track f.id) {
+    <mat-card appearance="outlined" class="field-card">
+      <mat-card-header>
+        <mat-card-title>{{ f.nome }}</mat-card-title>
+        <mat-card-subtitle>{{ f.cultura }} — {{ f.hectares }} ha</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>Plantio:</strong> {{ f.dataPlantio | date: 'dd/MM/yyyy' }}</p>
+        @if(f.variedade) {
+        <p><strong>Variedade:</strong> {{ f.variedade }}</p>
+        }
+      </mat-card-content>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-actions align="end">
+        <button mat-icon-button color="primary" (click)="editField(f.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteField(f.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+  } @else {
+  <p class="empty">Nenhuma lavoura cadastrada.</p>
+  }
+</section>

@@ -1,0 +1,104 @@
+@use "variables" as *;
+
+.dashboard {
+  min-height: 100dvh;
+  background: $gray-bg;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-weight: 700;
+    color: $green-dark;
+  }
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+
+  mat-card {
+    padding: 1rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: default;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    h2,
+    h3 {
+      font-weight: 700;
+      margin: 0.6rem 0 0;
+    }
+
+    &.saldo h2.positivo {
+      color: $green-dark;
+    }
+
+    &.saldo h2.negativo {
+      color: $red-main;
+    }
+
+    &.receita h3 {
+      color: $green-main;
+    }
+
+    &.despesa h3 {
+      color: $red-main;
+    }
+  }
+}
+.lavouras {
+  div {
+    align-self: center;
+  }
+}
+
+.atividade {
+  margin: 0.5rem;
+  padding: 10px;
+
+  .atividade-content {
+    display: flex;
+    flex-direction: column;
+    mat-card-title {
+      align-self: center;
+    }
+  }
+}
+
+.extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.avisos {
+  mat-chip {
+    margin: 0.5rem;
+    padding: 10px;
+  }
+  .avisos-content {
+    display: flex;
+    flex-direction: column;
+    mat-card-title {
+      align-self: center;
+    }
+  }
+}
+
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}

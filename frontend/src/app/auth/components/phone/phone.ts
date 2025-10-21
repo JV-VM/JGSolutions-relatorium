@@ -4,11 +4,14 @@ import {
   ElementRef,
   OnDestroy,
   ViewChild,
+  Output,
+  EventEmitter,
   forwardRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { intlTelInput } from 'intl-tel-input/angularWithUtils';
+
 @Component({
   selector: 'phone',
   templateUrl: './phone.html',
@@ -19,12 +22,14 @@ import { intlTelInput } from 'intl-tel-input/angularWithUtils';
       multi: true,
     },
   ],
-  encapsulation: ViewEncapsulation.None, // ensures CSS applies to dynamic .iti structure
+  encapsulation: ViewEncapsulation.None,
 })
 export class PhoneNumberComponent
   implements AfterViewInit, OnDestroy, ControlValueAccessor
 {
   @ViewChild('phoneInput', { static: true }) phoneInput!: ElementRef;
+  @Output() countryChange = new EventEmitter<string>();
+
   iti: any;
 
   private onChange: (value: any) => void = () => {};
@@ -38,15 +43,19 @@ export class PhoneNumberComponent
       autoPlaceholder: 'polite',
     });
 
-    // Sync value on input
-    this.phoneInput.nativeElement.addEventListener('input', () => {
+    this.phoneInput.nativeElement.addEventListener('input', () =>
+      this.propagateValue()
+    );
+
+    this.phoneInput.nativeElement.addEventListener('countrychange', () => {
+      const countryData = this.iti.getSelectedCountryData();
+      this.countryChange.emit(countryData.iso2.toUpperCase());
       this.propagateValue();
     });
 
-    // Sync value when country changes
-    this.phoneInput.nativeElement.addEventListener('countrychange', () => {
-      this.propagateValue();
-    });
+    this.phoneInput.nativeElement.addEventListener('blur', () =>
+      this.onTouched()
+    );
   }
 
   private propagateValue(): void {
@@ -56,7 +65,6 @@ export class PhoneNumberComponent
     }
   }
 
-  // ControlValueAccessor methods
   writeValue(value: any): void {
     if (value && this.iti) {
       this.iti.setNumber(value);
@@ -72,18 +80,12 @@ export class PhoneNumberComponent
   }
 
   setDisabledState(isDisabled: boolean): void {
-    if (this.phoneInput) {
-      this.phoneInput.nativeElement.disabled = isDisabled;
-    }
+    this.phoneInput.nativeElement.disabled = isDisabled;
   }
 
   ngOnDestroy(): void {
-    if (this.iti) {
-      try {
-        this.iti.destroy();
-      } catch (err) {
-        console.warn('intl-tel-input destroy skipped', err);
-      }
-    }
+    try {
+      this.iti?.destroy();
+    } catch {}
   }
 }

@@ -35,7 +35,7 @@
     <!-- Telefone -->
     <div>
       <label for="phone">Telefone (WhatsApp):</label>
-      <phone formArrayName="phone"></phone>
+      <phone formControlName="phone"></phone>
       @if (sign_up.get('phone')?.invalid && sign_up.get('phone')?.touched) {
       <small class="error">{{ getErrorMessage("phone") }}</small>
       }
@@ -77,4 +77,5 @@
   </section>
 
   <button type="submit" [disabled]="sign_up.invalid">Cadastrar Fazenda</button>
+  <p class="link" (click)="goToSignUp()">Registrar nova sessão</p>
 </form>

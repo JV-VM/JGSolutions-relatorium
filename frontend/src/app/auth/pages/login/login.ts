@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth';
+import { AuthLocalService } from '../../services/auth-local';
 
 @Component({
   selector: 'app-login',
@@ -21,13 +21,13 @@ export class LoginPage {
 
   constructor(
     private fb: FormBuilder,
-    private auth: AuthService,
+    private auth: AuthLocalService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
       farmName: ['', Validators.required],
       ownerName: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -42,7 +42,7 @@ export class LoginPage {
 
     try {
       await this.auth.login(farmName, ownerName, password);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/dashboard-page']);
     } catch (err: any) {
       this.errorMessage = err.message;
     } finally {
@@ -51,6 +51,6 @@ export class LoginPage {
   }
 
   goToSignUp() {
-    this.router.navigate(['/sign-up']);
+    this.router.navigate(['/auth/sign-up']);
   }
 }
